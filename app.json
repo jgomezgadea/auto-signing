@@ -1,0 +1,7 @@
+{
+  "name": "Start on Heroku: Python",
+  "description": "Code that allows to sign the current day into the Odoo ERP.",
+  "image": "heroku/python",
+  "repository": "https://github.com/jgomezgadea/auto-signing",
+  "keywords": ["python" ]
+}

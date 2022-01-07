@@ -1,0 +1,11 @@
+# Ignore pyc files
+*.pyc
+
+# Ignore vscode folder
+.vscode/
+*/.vscode/
+
+# Heroku files
+staticfiles
+.env
+db.sqlite3
