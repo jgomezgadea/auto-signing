@@ -118,8 +118,8 @@ class AutoSigning():
 
             # Sign morning
 
-            self.data["params"]["args"][0]["check_in"] = date + " " + self.twodigits(7 + gmt_offset) + ":" + self.twodigits(randrange(11)) + ":" + self.twodigits(randrange(60))
-            self.data["params"]["args"][0]["check_out"] = date + " " + self.twodigits(10 + gmt_offset) + ":" + self.twodigits(randrange(25, 35)) + ":" + self.twodigits(randrange(60))
+            self.data["params"]["args"][0]["check_in"] = date + " " + self.twodigits(8 + gmt_offset) + ":" + self.twodigits(randrange(11)) + ":" + self.twodigits(randrange(60))
+            self.data["params"]["args"][0]["check_out"] = date + " " + self.twodigits(14 + gmt_offset) + ":" + self.twodigits(randrange(25, 35)) + ":" + self.twodigits(randrange(60))
 
             response = requests.request("POST", self.odoo_url, headers=self.headers, data=json.dumps(self.data), verify=False)
             if(response.status_code == 200 and not "error" in json.loads(response.text).keys()):
@@ -137,17 +137,17 @@ class AutoSigning():
 
             # Sign afternoon
 
-            self.data["params"]["args"][0]["check_in"] = date + " " + self.twodigits(10 + gmt_offset) + ":" + self.twodigits(randrange(50, 60)) + ":" + self.twodigits(randrange(60))
-            self.data["params"]["args"][0]["check_out"] = date + " " + self.twodigits(15 + gmt_offset) + ":" + self.twodigits(randrange(25, 35)) + ":" + self.twodigits(randrange(60))
+            self.data["params"]["args"][0]["check_in"] = date + " " + self.twodigits(15 + gmt_offset) + ":" + self.twodigits(randrange(25, 35)) + ":" + self.twodigits(randrange(60))
+            self.data["params"]["args"][0]["check_out"] = date + " " + self.twodigits(17 + gmt_offset) + ":" + self.twodigits(randrange(11)) + ":" + self.twodigits(randrange(60))
 
             response = requests.request("POST", self.odoo_url, headers=self.headers, data=json.dumps(self.data), verify=False)
             if(response.status_code == 200 and not "error" in json.loads(response.text).keys()):
-                print("Set midday time successful.")
-                ret += "Se ha fichado el mediodía correctamente.\n"
+                print("Set afternoon time successful.")
+                ret += "Se ha fichado la tarde correctamente.\n"
             else:
-                print("ERROR: Set midday time unsuccessful.")
-                ret += "ERROR: No se ha podido fichar el mediodía.\n"
-                self.send_telegram(date + " ERROR: No se ha podido fichar el mediodía.")
+                print("ERROR: Set afternoon time unsuccessful.")
+                ret += "ERROR: No se ha podido fichar la tarde.\n"
+                self.send_telegram(date + " ERROR: No se ha podido fichar la tarde.")
                 error = True
             print(response.text)
             print("------------")
